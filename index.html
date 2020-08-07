@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 class="timestamp-text"></h1>
+    <button class="update-button">I did it!</button>
+    <script>
+      function updateDisplay() {
+        const timestamp = localStorage.getItem('timestamp');
+        if (timestamp) {
+          const date = new Date(timestamp);
+          document.querySelector('.timestamp-text').innerText = new Date(timestamp);
+        }
+      }
+
+      function updateTimestamp() {
+       const timestamp = new Date();
+        localStorage.setItem('timestamp', timestamp);
+        updateDisplay();
+      }
+
+      updateDisplay();
+      document.querySelector('.update-button').onclick = updateTimestamp;
+    </script>
+  </body>
+</html>
